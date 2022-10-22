@@ -29,7 +29,8 @@ def pregunta_01():
  
     # Retorne x y y 
     #return x_poly, data.y 
-    return x_poly
+    return x_poly, data.y 
+    
 
 
 def pregunta_02():
