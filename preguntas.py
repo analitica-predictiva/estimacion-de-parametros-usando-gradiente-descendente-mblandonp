@@ -45,18 +45,17 @@ def pregunta_02():
     n_iterations = 1000
 
     # Defina el parámetro inicial `params` como un arreglo de tamaño 3 con ceros
-    intercept_ = np.mean(np.array(y))
     params = np.zeros(x_poly.shape[1]) 
     for i in range(n_iterations):
 
         # Compute el pronóstico con los parámetros actuales
-        y_pred = np.dot(x_poly, params) + intercept_
+        y_pred = np.dot(x_poly, params)
 
         # Calcule el error
-        error = y - y_pred 
+        error = y_pred - y
 
         # Calcule el gradiente
-        gradient = -2 * error 
+        gradient = -2*np.sum(np.multiply(x_poly,np.array(error)[:,np.newaxis]),axis=0) 
 
         # Actualice los parámetros
         params = params - learning_rate * gradient
