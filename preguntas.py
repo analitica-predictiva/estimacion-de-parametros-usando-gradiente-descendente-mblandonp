@@ -35,30 +35,32 @@ def pregunta_01():
 
 def pregunta_02():
 
-    # Importe numpy
-    import numpy as np
-
-    x_poly, y = pregunta_01()
-
-    # Fije la tasa de aprendizaje en 0.0001 y el número de iteraciones en 1000
+    
+    # Importe numpy 
+    import numpy as np 
+ 
+    x_poly, y = pregunta_01() 
+ 
+    # Fije la tasa de aprendizaje en 0.0001 y el número de iteraciones en 1000 
     learning_rate = 0.0001 
-    n_iterations = 1000
-
-    # Defina el parámetro inicial `params` como un arreglo de tamaño 3 con ceros
+    n_iterations = 1000 
+ 
+    # Defina el parámetro inicial params como un arreglo de tamaño 3 con ceros 
+    intercept_ = np.mean(np.array(y)) 
     params = np.zeros(x_poly.shape[1]) 
-    for i in range(n_iterations):
-
-        # Compute el pronóstico con los parámetros actuales
-        y_pred = np.dot(x_poly, params)
-
-        # Calcule el error
-        error = (y_pred - y)/2
-
-        # Calcule el gradiente
+    for epochs in range(n_iterations): 
+ 
+        # Compute el pronóstico con los parámetros actuales 
+        y_pred = np.dot(x_poly, params) 
+ 
+        # Calcule el error 
+        error = (y - y_pred) / 2 
+ 
+        # Calcule el gradiente 
         gradient = -2*np.sum(np.multiply(x_poly,np.array(error)[:,np.newaxis]),axis=0) 
-
-        # Actualice los parámetros
-        params = params - learning_rate * gradient
-
-    #print(params)
+        #gradient =  -2*sum(error) 
+ 
+        # Actualice los parámetros 
+        params = params - learning_rate * gradient 
+ 
     return params
