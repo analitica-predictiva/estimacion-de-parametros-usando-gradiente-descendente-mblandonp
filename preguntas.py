@@ -46,7 +46,7 @@ def pregunta_02():
 
     # Defina el parámetro inicial `params` como un arreglo de tamaño 3 con ceros
     intercept_ = np.mean(np.array(y))
-    params = np.mean(np.array(3))
+    params = np.zeros(x_poly.shape[3]) 
     for i in range(n_iterations):
 
         # Compute el pronóstico con los parámetros actuales
@@ -61,4 +61,5 @@ def pregunta_02():
         # Actualice los parámetros
         params = params - learning_rate * gradient
 
+    #print(params)
     return params
